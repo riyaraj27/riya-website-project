@@ -110,6 +110,21 @@ footer {
   z-index: 100;
 }
 
+.pdf-button {
+  display: inline-block;
+  background-color: #ff69b4;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.pdf-button:hover {
+  background-color: #ff85c1;
+}
+
 html.light-mode {
   background-color: #fff;
   color: #000;
