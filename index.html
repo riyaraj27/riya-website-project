@@ -1,46 +1,32 @@
 <!DOCTYPE html> <!--SET DOCUMENT TYPE-->
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="This Riya's website">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This Riya's Portfolio Website">
     <title>Riya's Website!</title> <!--TAB TITLE-->
+    <link rel = "stylesheet" href = "style.css">
 </head>
 <body>
-
-
-</body>
-
-  <!--FIRST BODY SECTION-->
-  <body style="background-color: black;">
-    <h1 style="color:White;">Hello! |˶˙ᵕ˙ )ﾉﾞ </h1> <!--HEADER TITLE-->
-    <hr/> <!--LINE--> 
-    <!--PARAGRAPH SECTION-->
-    <h3 style="color:White;">I'm Riya!💗✨</h3>
-    <p style="color:White;">If you are wondering why this website looks wonky - I coded it. I'm learning from YouTube videos, but I'll get better at it. 
-    I hope to take more pictures of things and add more info about projects that I am working on!! Take a look around if you're bored. I hope 
-    you have a great day! <b> Keep Smiling! :) </b></p>
-  </body>
-
-</script>
   
-</body>
+  <header>
+  <!--FIRST BODY SECTION-->
+    <h1 style="color:White;">Hello! |˶˙ᵕ˙ )ﾉﾞ </h1> <!--HEADER TITLE-->
+    <h3 style="color:White;">I'm Riya!💗✨</h3>
+    <p>
+      If you are wondering why this website looks a little wonky - I coded it myself! I'm learning from YouTube videos and getting better everyday. 
+      I hope to add more photos and details about my projects. Feel feee to look around if you're bored! I hope 
+      you have a great day! <b> Keep Smiling! :) </b>
+    </p>
+  </header>
 
-  <body>
-    <!--LINK TO THE WEBSITE PAGE-->
-    <nav>
-    <!--NAVIGATIONAL TAG (LINKS)-->
-    <header>
-    </header>
-    <main>
-      <!--FOR BLOG ARTICLE SECTION-->
-      <article>
-        <!--BREAKS WEBSITE IN MULTIPLE SECTIONS-->
-        <section>
-          <h3 style="color:White;">Here are some pics from my photography album! <h3/>
-          <hr/>
-            </body>
-        </section>
+  <main>
+    <section class = "gallery-intro">
+      <h2>My Photography Album</h2>
+      <hr>
+    </section>
+    
+    <section class = "photo-gallery">
         <img width="220" height="300" src="flower!.jpg" alt="A really pretty flower"/>
         <img width="220" height="300" src="puppy.jpg" alt="ayo what the cheese nuggets"/>
         <img width="220" height="300" src="blue.jpg" alt="A blue flower"/>
@@ -82,37 +68,31 @@
         <img width="220" height="300" src="wowo.jpg" alt="big flower!"/>
         <img width="220" height="300" src="chicago1.jpg" alt="big buildings!"/>
         <img width="220" height="300" src="floo.jpg" alt="big flower!"/>
+    </section>
+  </main>
 
-        <section>
-        </section>
-      </article>
-    </main>
-    <footer>
-      <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 
+  <footer>
+     <p>Thanks for visiting! ✨</p>
+  </footer>
 <script>
-// Get the button
-let mybutton = document.getElementById("myBtn");
+    const mybutton = document.getElementById("myBtn");
 
-// When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
+    window.onscroll = function () {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    };
 
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
-  }
-}
-
-// When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-}
-</script>
-    </footer>
-  </body>
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  </script>
+</body>
 </html>
 
 <!-- EXTRA INFO-->
