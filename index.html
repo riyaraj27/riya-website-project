@@ -8,8 +8,17 @@
     <link rel = "stylesheet" href = "style.css">
 </head>
 <body>
+
+  <button class="toggle-btn" onclick"toggleMode()">Toggle Light/Dark Mode</button> <!--View Mode Toggle-->
+
+  <nav>
+    <a href="#top">Home</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
   
-  <header>
+  <header id="top">
   <!--FIRST BODY SECTION-->
     <h1>Hello! |˶˙ᵕ˙ )ﾉﾞ </h1> <!--HEADER TITLE-->
     <h3>I'm Riya!💗✨</h3>
@@ -21,7 +30,7 @@
   </header>
 
   <main>
-    <section class = "gallery-intro">
+    <section class = "gallery-intro" id="gallery">
       <h2>My Photography Album</h2>
       <hr>
     </section>
@@ -69,6 +78,16 @@
         <img width="220" height="300" src="chicago1.jpg" alt="big buildings!"/>
         <img width="220" height="300" src="floo.jpg" alt="big flower!"/>
     </section>
+
+    <section id="projects">
+      <h2>My Projects (Coming soon!)</h2>
+      <p>I'll be adding my other personal porjects here, like engineering designs, sustainability work, and creative builds.</p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <p>Feel free to reach out to me via <a href="mailto:your-email@example.com">email</a> or follow me on LinkedIn!</p>
+    </section>
   </main>
 
   <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
@@ -76,7 +95,8 @@
   <footer>
      <p>Thanks for visiting! ✨</p>
   </footer>
-<script>
+  
+  <script>
     const mybutton = document.getElementById("myBtn");
 
     window.onscroll = function () {
