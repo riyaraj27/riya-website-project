@@ -1,89 +1,292 @@
 <!DOCTYPE html>
-<figure class="card shot"><img src="chicago1.jpg" alt="Chicago skyline"></figure>
-<figure class="card shot"><img src="floo.jpg" alt="Flower close-up"></figure>
-</div>
-</section>
-</main>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Riya Raj – portfolio of engineering projects and photography." />
+  <title>Riya • Portfolio</title>
 
+  <!-- ====== Styles: single file for easy copy/paste ====== -->
+  <style>
+    /* ---------- Color System (Light/Dark) ---------- */
+    :root {
+      --bg: #0b0d12;         /* deep ink */
+      --text: #e8ebf1;
+      --muted: #aab1bf;
+      --card: #131826;
+      --border: #262d3d;
+      --accent: #7dd3fc;     /* sky */
+      --accent-2: #c084fc;   /* violet */
+      --shadow: 0 10px 40px rgba(0,0,0,.35);
+      --radius: 16px;
+    }
 
-<footer class="container">
-<p>Thanks for visiting! ✨</p>
-</footer>
+    :root[data-theme="light"] {
+      --bg: #fbfbfd;
+      --text: #111827;
+      --muted: #5b6170;
+      --card: #ffffff;
+      --border: #e6e8ee;
+      --accent: #2563eb;
+      --accent-2: #7c3aed;
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+    }
 
+    /* Respect system preference unless a choice is saved */
+    @media (prefers-color-scheme: light) {
+      :root:not([data-theme]) {
+        --bg: #fbfbfd; --text: #111827; --muted:#5b6170; --card:#fff; --border:#e6e8ee; --accent:#2563eb; --accent-2:#7c3aed; --shadow: 0 10px 30px rgba(0,0,0,.08);
+      }
+    }
 
-<!-- Floating controls -->
-<button class="toggle-btn" onclick="toggleMode()" aria-pressed="false" title="Toggle theme">Toggle Dark/Light</button>
-<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    /* ---------- Base / Layout ---------- */
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; font: 16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text); background: var(--bg);
+      min-height: 100dvh; position: relative; overflow-x: hidden;
+    }
 
+    /* Soft gradient blobs in the background */
+    .bg-blobs { position: fixed; inset: -20vmax 0 0 0; z-index: -1; pointer-events: none; opacity: .35; filter: blur(40px) saturate(140%); }
+    .blob { position: absolute; border-radius: 50%; mix-blend-mode: screen; }
+    .blob.b1 { width: 45vmax; height: 45vmax; left: -10vmax; top: -8vmax; background: radial-gradient(circle at 30% 30%, var(--accent), transparent 60%); }
+    .blob.b2 { width: 50vmax; height: 50vmax; right: -15vmax; top: -12vmax; background: radial-gradient(circle at 70% 40%, var(--accent-2), transparent 60%); }
+    .blob.b3 { width: 50vmax; height: 50vmax; left: 20vmax; bottom: -20vmax; background: radial-gradient(circle at 50% 50%, #34d399, transparent 60%); }
 
-<!-- ====== Scripts ====== -->
-<script>
-// Theme toggle with persistence
-const THEME_KEY = 'riya-theme';
-const root = document.documentElement;
-const btn = document.querySelector('.toggle-btn');
+    .container { width: min(1100px, 92vw); margin-inline: auto; }
 
+    /* ---------- Nav ---------- */
+    .nav-wrap { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(8px); background: color-mix(in oklab, var(--bg) 78%, transparent); border-bottom: 1px solid var(--border); }
+    nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .75rem 0; }
+    .brand { font-weight: 800; letter-spacing: .5px; }
+    .brand span { background: linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .links { display: flex; align-items: center; gap: .25rem; flex-wrap: wrap; }
+    .links a { position: relative; padding: .5rem .8rem; border-radius: 999px; text-decoration: none; color: var(--text); opacity: .9; }
+    .links a::after { content:""; position: absolute; left: .8rem; right: .8rem; bottom: .35rem; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transform: scaleX(0); transform-origin: left; transition: transform .25s ease; }
+    .links a:hover::after { transform: scaleX(1); }
 
-(function initTheme(){
-const saved = localStorage.getItem(THEME_KEY);
-if (saved === 'light' || saved === 'dark') root.setAttribute('data-theme', saved);
-updateToggleButton();
-})();
+    /* ---------- Header / Hero ---------- */
+    header.hero { padding: 5rem 0 2.25rem; text-align: center; }
+    header.hero h1 { font-size: clamp(2rem, 4.4vw, 3.25rem); margin: 0 0 .4rem; letter-spacing: .3px; }
+    header.hero p { color: var(--muted); margin: 0 auto; max-width: 65ch; }
 
+    /* ---------- Utility ---------- */
+    .card { background: color-mix(in oklab, var(--card) 86%, transparent); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .section { padding: 2.25rem 0; }
+    h2.section-title { font-size: clamp(1.25rem, 2.5vw, 1.75rem); margin: 0 0 1rem; }
+    .subtle { color: var(--muted); }
 
-function currentTheme(){
-return root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-}
-function setTheme(mode){
-root.setAttribute('data-theme', mode); localStorage.setItem(THEME_KEY, mode); updateToggleButton();
-}
-function updateToggleButton(){
-if (!btn) return; const mode = currentTheme(); const next = mode === 'light' ? 'Dark' : 'Light';
-btn.textContent = `Toggle ${next}`; btn.setAttribute('aria-pressed', mode === 'dark');
-}
-function toggleMode(){ setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
-window.toggleMode = toggleMode;
+    /* ---------- Projects (PDF card with tiny preview) ---------- */
+    .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
 
+    .pdf-card { display: grid; grid-template-columns: 110px 1fr; gap: 1rem; align-items: center; padding: 1rem; text-decoration: none; color: inherit; }
+    .pdf-card:hover { transform: translateY(-2px); transition: transform .12s ease; }
+    .pdf-thumb { width: 110px; height: auto; display: block; border-radius: 10px; border: 1px solid var(--border); box-shadow: 0 2px 10px rgba(0,0,0,.08); background: linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,0)); }
+    .pdf-text { display: flex; flex-direction: column; gap: .35rem; }
+    .pdf-text strong { font-weight: 700; }
+    .pdf-text em { font-style: normal; color: var(--muted); font-size: .95rem; }
 
-// Back to top
-const mybutton = document.getElementById('myBtn');
-window.addEventListener('scroll', () => {
-const show = document.documentElement.scrollTop > 20 || document.body.scrollTop > 20;
-mybutton.style.display = show ? 'block' : 'none';
-});
-function topFunction(){ document.body.scrollTop = 0; document.documentElement.scrollTop = 0; }
-window.topFunction = topFunction;
-</script>
+    /* ---------- Gallery ---------- */
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .8rem; }
+    .shot { position: relative; aspect-ratio: 3/4; overflow: hidden; border-radius: 14px; border: 1px solid var(--border); }
+    .shot img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
+    .shot:hover img { transform: scale(1.03); }
+    .shot::after { content:""; position:absolute; inset:0; background: linear-gradient(to top, rgba(0,0,0,.20), transparent 40%); opacity:.3; pointer-events:none; }
 
+    /* ---------- Footer ---------- */
+    footer { padding: 2rem 0 4.5rem; text-align: center; color: var(--muted); }
 
-<!-- PDF.js thumbnail for the first project PDF -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.8.69/pdf.min.js" integrity="sha512-zbRdzx0K0HqGkz2hS4jMbYq2Gqg+4EqtqJolXUqYo1v2GbvIUk+U3D4hESyiw4l7+vC4r8y0i8bI4m8vHkO7aA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>
-pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.8.69/pdf.worker.min.js";
-(function renderPDFThumb(){
-const pdfUrl = 'CE398_Group7_Final_Report.pdf';
-const canvas = document.getElementById('report-thumb');
-if (!canvas || !window.pdfjsLib) return;
-const ctx = canvas.getContext('2d', { alpha: false });
-const cssWidth = 110; const dpr = window.devicePixelRatio || 1;
-pdfjsLib.getDocument(pdfUrl).promise.then(pdf => pdf.getPage(1)).then(page => {
-const v1 = page.getViewport({ scale: 1 });
-const scale = cssWidth / v1.width; const vp = page.getViewport({ scale });
-canvas.style.width = cssWidth + 'px'; canvas.style.height = vp.height + 'px';
-canvas.width = Math.round(vp.width * dpr); canvas.height = Math.round(vp.height * dpr);
-ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-return page.render({ canvasContext: ctx, viewport: vp }).promise;
-}).catch(()=>{
-// graceful fallback
-const fallback = document.createElement('div');
-fallback.textContent = '📄';
-Object.assign(fallback.style, { width:'110px', height:'150px', display:'grid', placeItems:'center', border:'1px solid var(--border)', borderRadius:'10px' });
-canvas.replaceWith(fallback);
-});
-})();
-</script>
+    /* ---------- Floating Buttons ---------- */
+    .toggle-btn, #myBtn {
+      position: fixed; right: 1rem; z-index: 60; border-radius: 999px; cursor: pointer; border: 1px solid var(--border); box-shadow: var(--shadow);
+      background: var(--card); color: var(--text); transition: transform .08s ease, box-shadow .18s ease;
+    }
+    .toggle-btn { bottom: 1rem; padding: .6rem .9rem; }
+    .toggle-btn:hover { transform: translateY(-1px); }
+    #myBtn { bottom: 4.25rem; padding: .5rem .75rem; display: none; }
+
+    @media (prefers-reduced-motion: reduce) { html{scroll-behavior:auto} .shot img, .links a::after, .pdf-card:hover, .toggle-btn{transition:none !important} }
+  </style>
+</head>
+
+<body>
+  <!-- Background blobs -->
+  <div class="bg-blobs" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
+  <!-- Sticky Nav -->
+  <div class="nav-wrap">
+    <div class="container">
+      <nav>
+        <div class="brand">Riya <span>Raj</span></div>
+        <div class="links">
+          <a href="#top">Home</a>
+          <a href="#projects">Projects</a>
+          <a href="#gallery">Gallery</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <header id="top" class="hero container">
+    <h1>Hello! |˶˙ᵕ˙ )ﾉﾞ I’m Riya 💗✨</h1>
+    <p>
+      If this looks a little wonky, it’s because I’m building it by hand—learning, iterating, and having fun.
+      I’ll keep adding photography and engineering projects focused on sustainability, materials, and joyful spaces. Keep smiling! :)
+    </p>
+  </header>
+
+  <main class="container">
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+      <h2 class="section-title">My Projects</h2>
+      <p class="subtle">A mix of engineering designs, sustainability work, and creative builds.</p>
+
+      <div class="project-grid">
+        <!-- PDF preview card (thumbnail is rendered with PDF.js) -->
+        <a class="card pdf-card" href="CE398_Group7_Final_Report.pdf" target="_blank" rel="noopener">
+          <canvas id="report-thumb" class="pdf-thumb" aria-hidden="true"></canvas>
+          <span class="pdf-text">
+            <strong>CE 398 — Group 7 Final Report</strong>
+            <em>PDF • opens in a new tab</em>
+          </span>
+        </a>
+
+        <!-- Add more project cards here as needed -->
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section">
+      <h2 class="section-title">Photography</h2>
+      <p class="subtle">Little snapshots of color, texture, and places I love.</p>
+
+      <div class="gallery">
+        <!-- Replace src values with your images; kept your names and fixed one alt typo -->
+        <figure class="card shot"><img src="flower!.jpg" alt="A really pretty flower"></figure>
+        <figure class="card shot"><img src="puppy.jpg" alt="Puppy portrait"></figure>
+        <figure class="card shot"><img src="blue.jpg" alt="A blue flower"></figure>
+        <figure class="card shot"><img src="city.jpg" alt="Atlanta city skyline"></figure>
+        <figure class="card shot"><img src="hawkins.jpg" alt="Hawkins Room"></figure>
+        <figure class="card shot"><img src="mdrs.jpg" alt="Hibiscus Flower"></figure>
+        <figure class="card shot"><img src="pink 3.jpg" alt="Pink bloom"></figure>
+        <figure class="card shot"><img src="hydra.jpg" alt="Hydrangea"></figure>
+        <figure class="card shot"><img src="letter.jpg" alt="Stone letters"></figure>
+        <figure class="card shot"><img src="mitochondria.jpg" alt="Mitochondria flower"></figure>
+        <figure class="card shot"><img src="houston.jpg" alt="City lights"></figure>
+        <figure class="card shot"><img src="pink.jpg" alt="Pink flower"></figure>
+        <figure class="card shot"><img src="purple.jpg" alt="Purple flower"></figure>
+        <figure class="card shot"><img src="pink 4.jpg" alt="Pink flower variant"></figure>
+        <figure class="card shot"><img src="BWchicago.jpg" alt="Chicago in black and white"></figure>
+        <figure class="card shot"><img src="yellow.jpg" alt="Yellow flower"></figure>
+        <figure class="card shot"><img src="happy.jpg" alt="Smiling moment"></figure>
+        <figure class="card shot"><img src="berry.JPG" alt="Berries"></figure>
+        <figure class="card shot"><img src="church.jpg" alt="Church architecture"></figure>
+        <figure class="card shot"><img src="fluffy 2.JPG" alt="Fluffy cat"></figure>
+        <figure class="card shot"><img src="pink 5.jpg" alt="Pink flower close-up"></figure>
+        <figure class="card shot"><img src="atl.jpg" alt="Atlanta vibe"></figure>
+        <figure class="card shot"><img src="gray 2.jpg" alt="Gray tones"></figure>
+        <figure class="card shot"><img src="leaves.jpg" alt="Leaves texture"></figure>
+        <figure class="card shot"><img src="gray.jpg" alt="Gray scene"></figure>
+        <figure class="card shot"><img src="pink 2.jpg" alt="Pink petals"></figure>
+        <figure class="card shot"><img src="buddy.jpg" alt="Buddy the cat"></figure>
+        <figure class="card shot"><img src="puple.jpg" alt="Purple flower"></figure>
+        <figure class="card shot"><img src="turtle.jpg" alt="Turtle"></figure>
+        <figure class="card shot"><img src="trees.jpg" alt="Trees"></figure>
+        <figure class="card shot"><img src="arch.jpg" alt="Archway"></figure>
+        <figure class="card shot"><img src="water.jpg" alt="Water scene"></figure>
+        <figure class="card shot"><img src="rocks.jpg" alt="Rocks"></figure>
+        <figure class="card shot"><img src="rose.jpg" alt="Rose"></figure>
+        <figure class="card shot"><img src="shuttle.jpg" alt="Space shuttle"></figure>
+        <figure class="card shot"><img src="star.jpg" alt="Starry tree"></figure>
+        <figure class="card shot"><img src="dahlia.jpg" alt="Dahlia"></figure>
+        <figure class="card shot"><img src="riki.jpg" alt="Riki the cat"></figure>
+        <figure class="card shot"><img src="wowo.jpg" alt="Big flower"></figure>
+        <figure class="card shot"><img src="chicago1.jpg" alt="Chicago skyline"></figure>
+        <figure class="card shot"><img src="floo.jpg" alt="Flower close-up"></figure>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <p>Thanks for visiting! ✨</p>
+  </footer>
+
+  <!-- Floating controls -->
+  <button class="toggle-btn" onclick="toggleMode()" aria-pressed="false" title="Toggle theme">Toggle Dark/Light</button>
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+  <!-- ====== Scripts ====== -->
+  <script>
+    // Theme toggle with persistence
+    const THEME_KEY = 'riya-theme';
+    const root = document.documentElement;
+    const btn = document.querySelector('.toggle-btn');
+
+    (function initTheme(){
+      const saved = localStorage.getItem(THEME_KEY);
+      if (saved === 'light' || saved === 'dark') root.setAttribute('data-theme', saved);
+      updateToggleButton();
+    })();
+
+    function currentTheme(){
+      return root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    }
+    function setTheme(mode){
+      root.setAttribute('data-theme', mode); localStorage.setItem(THEME_KEY, mode); updateToggleButton();
+    }
+    function updateToggleButton(){
+      if (!btn) return; const mode = currentTheme(); const next = mode === 'light' ? 'Dark' : 'Light';
+      btn.textContent = `Toggle ${next}`; btn.setAttribute('aria-pressed', mode === 'dark');
+    }
+    function toggleMode(){ setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+    window.toggleMode = toggleMode;
+
+    // Back to top
+    const mybutton = document.getElementById('myBtn');
+    window.addEventListener('scroll', () => {
+      const show = document.documentElement.scrollTop > 20 || document.body.scrollTop > 20;
+      mybutton.style.display = show ? 'block' : 'none';
+    });
+    function topFunction(){ document.body.scrollTop = 0; document.documentElement.scrollTop = 0; }
+    window.topFunction = topFunction;
+  </script>
+
+  <!-- PDF.js thumbnail for the first project PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.8.69/pdf.min.js" integrity="sha512-zbRdzx0K0HqGkz2hS4jMbYq2Gqg+4EqtqJolXUqYo1v2GbvIUk+U3D4hESyiw4l7+vC4r8y0i8bI4m8vHkO7aA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.8.69/pdf.worker.min.js";
+    (function renderPDFThumb(){
+      const pdfUrl = 'CE398_Group7_Final_Report.pdf';
+      const canvas = document.getElementById('report-thumb');
+      if (!canvas || !window.pdfjsLib) return;
+      const ctx = canvas.getContext('2d', { alpha: false });
+      const cssWidth = 110; const dpr = window.devicePixelRatio || 1;
+      pdfjsLib.getDocument(pdfUrl).promise.then(pdf => pdf.getPage(1)).then(page => {
+        const v1 = page.getViewport({ scale: 1 });
+        const scale = cssWidth / v1.width; const vp = page.getViewport({ scale });
+        canvas.style.width = cssWidth + 'px'; canvas.style.height = vp.height + 'px';
+        canvas.width = Math.round(vp.width * dpr); canvas.height = Math.round(vp.height * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        return page.render({ canvasContext: ctx, viewport: vp }).promise;
+      }).catch(()=>{
+        // graceful fallback
+        const fallback = document.createElement('div');
+        fallback.textContent = '📄';
+        Object.assign(fallback.style, { width:'110px', height:'150px', display:'grid', placeItems:'center', border:'1px solid var(--border)', borderRadius:'10px' });
+        canvas.replaceWith(fallback);
+      });
+    })();
+  </script>
 </body>
 </html>
+
 
 <!-- EXTRA INFO-->
 <!-- use <big> to bold words, use <small> for small words, <i> for italics-->
