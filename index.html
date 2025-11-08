@@ -1,127 +1,93 @@
-<!DOCTYPE html> <!--SET DOCUMENT TYPE-->
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="This Riya's Portfolio Website">
-    <title>Riya's Website!</title> <!--TAB TITLE-->
-    <link rel = "stylesheet" href = "style.css">
-</head>
-<body>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Riya Raj – portfolio of engineering projects and photography." />
+<title>Riya • Portfolio</title>
 
-  <button class="toggle-btn" onclick="toggleMode()">Toggle Light/Dark Mode</button> <!--View Mode Toggle-->
 
-  <nav>
-    <a href="#top">Home</a>
-    <a href="#projects">Projects</a>
-    <a href="#gallery">Gallery</a>
-  </nav>
-  
-  <header id="top">
-  <!--FIRST BODY SECTION-->
-    <h1>Hello! |˶˙ᵕ˙ )ﾉﾞ </h1> <!--HEADER TITLE-->
-    <h3>I'm Riya!💗✨</h3>
-    <p>
-      If you are wondering why this website looks a little wonky - I coded it myself! I'm learning from YouTube videos and getting better everyday. 
-      I hope to add more photos and details about my projects. Feel free to look around if you're bored! I hope 
-      you have a great day! <b> Keep Smiling! :) </b>
-    </p>
-  </header>
+<!-- ====== Styles: single file for easy copy/paste ====== -->
+<style>
+/* ---------- Color System (Light/Dark) ---------- */
+:root {
+--bg: #0b0d12; /* deep ink */
+--text: #e8ebf1;
+--muted: #aab1bf;
+--card: #131826;
+--border: #262d3d;
+--accent: #7dd3fc; /* sky */
+--accent-2: #c084fc; /* violet */
+--shadow: 0 10px 40px rgba(0,0,0,.35);
+--radius: 16px;
+}
 
-  <main>
-<section id="projects">
-  <h2>My Projects</h2>
-  <p>I'll be adding my other personal projects here, like engineering designs, sustainability work, and creative builds. These projects not only show what
-    I have learned in my coursework, but also taught me how to communicate in teams, develop technical writing skills, and provide deliverables according 
-    to criteria and constraints.</p>
 
-  <a class="pdf-card" href="CE398_Group7_Final_Report.pdf" target="_blank" rel="noopener">
-    <span class="pdf-icon" aria-hidden="true">📄</span>
-    <span class="pdf-text">
-      <strong>Analyzing Energy Efficiency Alternatives - Purdue Wilmeth Active Learning Center</strong>
-      <em>PDF • opens in a new tab</em>
-    </span>
-  </a>
-  <h1>As part of my Systems Engineering design course, our team evaluated rooftop solar, wind, and hybrid
-        options for a 24-hours library using discrete optimization and lifecycle economics. Our final design 
-        recommended rooftop PV with B/C ≈ 2.57 and projected 20-year savings through reduced energy cost and 
-        incentives, annual energy costs, and potential green incentives.</h1>
-</section>
-    
-    <section class = "gallery-intro" id="gallery">
-      <h2>My Photography Album</h2>
-      <hr>
-    </section>
-    
-    <section class = "photo-gallery">
-        <img width="220" height="300" src="flower!.jpg" alt="A really pretty flower"/>
-        <img width="220" height="300" src="puppy.jpg" alt="ayo what the cheese nuggets"/>
-        <img width="220" height="300" src="blue.jpg" alt="A blue flower"/>
-        <img width="220" height="300" src="city.jpg" alt="Atlanta city"/>
-        <img width="220" height="300" src="hawkins.jpg" alt="Hawkins Room!"/>
-        <img width="220" height="300" src="mdrs.jpg" alt="Hibiscus Flower"/>
-        <img width="220" height="300" src="pink 3.jpg" alt="ayo what the cheese nuggets"/>
-        <img width="220" height="300" src="hydra.jpg" alt="Hydra Flower"/>
-        <img width="220" height="300" src="letter.jpg" alt="Stone letters"/>
-        <img width="220" height="300" src="mitochondria.jpg" alt="mitochondria Flower"/>
-        <img width="220" height="300" src="houston.jpg" atl=city lights"/>
-        <img width="220" height="300" src="pink.jpg" alt="pink boi"/>
-        <img width="220" height="300" src="purple.jpg" alt="purple poisoner"/>
-        <img width="220" height="300" src="pink 4.jpg" alt="ayo what the cheese nuggets"/>
-        <img width="220" height="300" src="BWchicago.jpg" alt="ayo what the cheese nuggets"/>
-        <img width="220" height="300" src="yellow.jpg" alt="ayo what the cheese nuggets"/>
-        <img width="220" height="300" src="happy.jpg" alt="ayo what the cheese nuggets"/>
-        <img width="220" height="300" src="berry.JPG" alt="ayo what the cheese nuggets"/>
-        <img width="220" height="300" src="church.jpg" alt="ayo what the cheese nuggets"/>   
-        <img width="220" height="300" src="fluffy 2.JPG" alt="ayo what the cheese nuggets"/>
-        <img width="220" height="300" src="pink 5.jpg" alt="ayo what the cheese nuggets"/>
-        <img width="220" height="300" src="atl.jpg" alt="ayo what the cheese nuggets"/>
-        <img width="220" height="300" src="gray 2.jpg" alt="ayo what the cheese nuggets"/>
-        <img width="220" height="300" src="leaves.jpg" alt="ayo what the cheese nuggets"/>
-        <img width="220" height="300" src="gray.jpg" alt="ayo what the cheese nuggets"/>
-        <img width="220" height="300" src="pink 2.jpg" alt="ayo what the cheese nuggets"/>
-        <img width="220" height="300" src="buddy.jpg" alt="buddy the cat!"/>
-        <img width="220" height="300" src="puple.jpg" alt="ayo what the cheese nuggets"/>
-        <img width="220" height="300" src="turtle.jpg" alt="ayo what the cheese nuggets"/>
-        <img width="220" height="300" src="trees.jpg" alt="ayo what the cheese nuggets"/>
-        <img width="220" height="300" src="arch.jpg" alt="ayo what the cheese nuggets"/>
-        <img width="220" height="300" src="water.jpg" alt="ayo what the cheese nuggets"/>
-        <img width="220" height="300" src="rocks.jpg" alt="ayo what the cheese nuggets"/>
-        <img width="220" height="300" src="rose.jpg" alt="ayo what the cheese nuggets"/>
-        <img width="220" height="300" src="shuttle.jpg" alt="ayo what the cheese nuggets"/>
-        <img width="220" height="300" src="star.jpg" alt="starry tree"/>
-        <img width="220" height="300" src="dahlia.jpg" alt="pink floower"/>
-        <img width="220" height="300" src="riki.jpg" alt="riki the cat!"/>
-        <img width="220" height="300" src="wowo.jpg" alt="big flower!"/>
-        <img width="220" height="300" src="chicago1.jpg" alt="big buildings!"/>
-        <img width="220" height="300" src="floo.jpg" alt="big flower!"/>
-    </section>
+:root[data-theme="light"] {
+--bg: #fbfbfd;
+--text: #111827;
+--muted: #5b6170;
+--card: #ffffff;
+--border: #e6e8ee;
+--accent: #2563eb;
+--accent-2: #7c3aed;
+--shadow: 0 10px 30px rgba(0,0,0,.08);
+}
 
-  </main>
 
-  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+/* Respect system preference unless a choice is saved */
+@media (prefers-color-scheme: light) {
+:root:not([data-theme]) {
+--bg: #fbfbfd; --text: #111827; --muted:#5b6170; --card:#fff; --border:#e6e8ee; --accent:#2563eb; --accent-2:#7c3aed; --shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+}
 
-  <footer>
-     <p>Thanks for visiting! ✨</p>
-  </footer>
-  
-  <script>
-    const mybutton = document.getElementById("myBtn");
 
-    window.onscroll = function () {
-      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        mybutton.style.display = "block";
-      } else {
-        mybutton.style.display = "none";
-      }
-    };
+/* ---------- Base / Layout ---------- */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+margin: 0; font: 16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+color: var(--text); background: var(--bg);
+min-height: 100dvh; position: relative; overflow-x: hidden;
+}
 
-    function topFunction() {
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-    }
-  </script>
-</body>
+
+/* Soft gradient blobs in the background */
+.bg-blobs { position: fixed; inset: -20vmax 0 0 0; z-index: -1; pointer-events: none; opacity: .35; filter: blur(40px) saturate(140%); }
+.blob { position: absolute; border-radius: 50%; mix-blend-mode: screen; }
+.blob.b1 { width: 45vmax; height: 45vmax; left: -10vmax; top: -8vmax; background: radial-gradient(circle at 30% 30%, var(--accent), transparent 60%); }
+.blob.b2 { width: 50vmax; height: 50vmax; right: -15vmax; top: -12vmax; background: radial-gradient(circle at 70% 40%, var(--accent-2), transparent 60%); }
+.blob.b3 { width: 50vmax; height: 50vmax; left: 20vmax; bottom: -20vmax; background: radial-gradient(circle at 50% 50%, #34d399, transparent 60%); }
+
+
+.container { width: min(1100px, 92vw); margin-inline: auto; }
+
+
+/* ---------- Nav ---------- */
+.nav-wrap { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(8px); background: color-mix(in oklab, var(--bg) 78%, transparent); border-bottom: 1px solid var(--border); }
+nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .75rem 0; }
+.brand { font-weight: 800; letter-spacing: .5px; }
+.brand span { background: linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.links { display: flex; align-items: center; gap: .25rem; flex-wrap: wrap; }
+.links a { position: relative; padding: .5rem .8rem; border-radius: 999px; text-decoration: none; color: var(--text); opacity: .9; }
+.links a::after { content:""; position: absolute; left: .8rem; right: .8rem; bottom: .35rem; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transform: scaleX(0); transform-origin: left; transition: transform .25s ease; }
+.links a:hover::after { transform: scaleX(1); }
+
+
+/* ---------- Header / Hero ---------- */
+header.hero { padding: 5rem 0 2.25rem; text-align: center; }
+header.hero h1 { font-size: clamp(2rem, 4.4vw, 3.25rem); margin: 0 0 .4rem; letter-spacing: .3px; }
+header.hero p { color: var(--muted); margin: 0 auto; max-width: 65ch; }
+
+
+/* ---------- Utility ---------- */
+.card { background: color-mix(in oklab, var(--card) 86%, transparent); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+.section { padding: 2.25rem 0; }
+h2.section-title { font-size: clamp(1.25rem, 2.5vw, 1.75rem); margin: 0 0 1rem; }
+.subtle { color: var(--muted); }
+
+
 </html>
 
 <!-- EXTRA INFO-->
