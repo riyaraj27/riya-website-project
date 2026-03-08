@@ -4,7 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="This Riya's Portfolio Website">
-    <title>Riya's Website!</title> <!--TAB TITLE-->
+    <title>Riya's Website!</title> 
+    <style>
+  /* Container for images */
+  photo-gallery {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  /* Make all images the same size */
+  photo-gallery img {
+    width: 200px;       /* Fixed width */
+    height: 200px;      /* Fixed height */
+    object-fit: cover;  /* Crop to fit without distortion */
+    border-radius: 8px; /* Optional rounded corners */
+  }
+</style><!--TAB TITLE-->
     <link rel = "stylesheet" href = "style.css">
 </head>
 <body>
@@ -51,10 +67,10 @@
     </section>
     
     <section class = "photo-gallery">
-        <img width="150" height="200" src="flower!.jpg">
-        <img width="150" height="200" src="blue.jpg">
-        <img width="150" height="200" src="puppy.jpg" alt="ayo what the cheese nuggets"/>
-        <img width="150" height="200" src="city.jpg" alt="Atlanta city"/>
+        <img src="flower!.jpg">
+        <img src="blue.jpg">
+        <img src="puppy.jpg" alt="ayo what the cheese nuggets"/>
+        <img src="city.jpg" alt="Atlanta city"/>
         <img width="150" height="200" src="hawkins.jpg" alt="Hawkins Room!"/>
         <img width="150" height="200" src="mdrs.jpg" alt="Hibiscus Flower"/>
         <img width="150" height="200" src="pink 3.jpg" alt="ayo what the cheese nuggets"/>
